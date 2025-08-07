@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ultimate Pomodoro Timer</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+
+  <main class="flex flex-col items-center justify-center min-h-screen px-4 py-10 space-y-6">
+    <h1 class="text-3xl font-semibold tracking-tight">Pomodoro Timer</h1>
+
+    <!-- SVG Progress Circle -->
+    <svg id="progress-ring" width="280" height="280">
+      <circle
+        class="progress-bg"
+        stroke="#e9d5ff"
+        stroke-width="10"
+        fill="transparent"
+        r="130"
+        cx="140"
+        cy="140"
+      />
+      <circle
+        id="progress-indicator"
+        class="progress-indicator"
+        stroke="#7c3aed"
+        stroke-width="10"
+        fill="transparent"
+        r="130"
+        cx="140"
+        cy="140"
+        stroke-linecap="round"
+        stroke-dasharray="816"
+        stroke-dashoffset="816"
+      />
+    </svg>
+
+    <!-- Timer Display -->
+    <div id="timer-display" class="text-5xl font-mono">25:00</div>
+    <div id="status-text" class="text-sm uppercase tracking-wide">Work Session</div>
+
+    <!-- Controls -->
+    <div id="controls" class="flex gap-4 mt-4">
+      <button id="start-btn" class="btn">Start</button>
+      <button id="pause-btn" class="btn" disabled>Pause</button>
+      <button id="reset-btn" class="btn">Reset</button>
+    </div>
+
+    <!-- Sound Volume -->
+    <label for="volume" class="mt-4 block text-sm">Volume:</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" class="w-1/2" />
+
+    <!-- Motivational Quote -->
+    <div id="quote" class="italic text-center max-w-md mt-4 text-purple-700 dark:text-purple-300"></div>
+
+    <!-- Session Counter -->
+    <div id="session-counter" class="text-sm mt-2">Pomodoros Today: <span id="session-count">0</span></div>
+
+    <!-- Settings Toggle -->
+    <button id="settings-toggle" class="underline mt-4">Settings</button>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="hidden mt-4 space-y-2 border-t pt-4">
+      <label>
+        Work Duration (mins):
+        <input type="number" id="work-duration" min="1" value="25" class="input" />
+      </label>
+      <label>
+        Short Break (mins):
+        <input type="number" id="short-break-duration" min="1" value="5" class="input" />
+      </label>
+      <label>
+        Long Break (mins):
+        <input type="number" id="long-break-duration" min="1" value="15" class="input" />
+      </label>
+      <button id="save-settings" class="btn mt-2">Save Settings</button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="mt-6 btn">Toggle Dark Mode</button>
+  </main>
+
+  <!-- Sound -->
+  <audio id="chime-sound" src="chime.mp3" preload="auto"></audio>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

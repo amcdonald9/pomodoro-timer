@@ -1,6 +1,21 @@
 /* Base Typography */
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background-color: #111827;
+  color: #f9fafb;
 }
 
 /* Timer Display */
@@ -8,6 +23,10 @@ body {
   font-size: 4rem;
   font-weight: 600;
   text-align: center;
+  user-select: none;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
 /* Buttons */
@@ -16,17 +35,31 @@ body {
   color: white;
   padding: 0.5rem 1.25rem;
   border-radius: 0.5rem;
-  font-weight: 500;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
   transition: background-color 0.2s;
+  min-width: 90px;
+  user-select: none;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
   background-color: #6d28d9;
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Dark Mode Buttons */
+body.dark .btn {
+  background-color: #a78bfa;
+  color: #1f2937;
+}
+
+body.dark .btn:hover:not(:disabled) {
+  background-color: #c4b5fd;
 }
 
 /* Inputs */
@@ -39,9 +72,10 @@ body {
   text-align: center;
   background-color: white;
   color: black;
+  user-select: text;
 }
 
-.dark .input {
+body.dark .input {
   background-color: #1f2937;
   border-color: #4b5563;
   color: white;
@@ -50,6 +84,11 @@ body {
 /* SVG Progress Ring */
 #progress-ring {
   transform: rotate(-90deg);
+  width: 280px;
+  height: 280px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
 }
 
 .progress-bg {
@@ -59,70 +98,116 @@ body {
 .progress-indicator {
   transition: stroke-dashoffset 1s linear;
   stroke: #7c3aed;
+  stroke-linecap: round;
 }
 
-/* Dark Mode Adjustments */
-.dark body {
-  background-color: #111827;
-  color: #f9fafb;
+/* Dark Mode Progress Ring Colors */
+body.dark .progress-bg {
+  stroke: #374151;
 }
 
-.dark .btn {
-  background-color: #a78bfa;
-  color: #1f2937;
-}
-
-.dark .btn:hover {
-  background-color: #c4b5fd;
+body.dark .progress-indicator {
+  stroke: #a78bfa;
 }
 
 /* Motivational Quote */
 #quote {
   font-size: 0.9rem;
-  opacity: 0.9;
+  opacity: 0.85;
+  font-style: italic;
+  text-align: center;
+  margin: 1rem 0;
+  max-width: 320px;
+  user-select: none;
+  color: #6b7280; /* Gray-500 */
+}
+
+body.dark #quote {
+  color: #d1d5db; /* Gray-300 */
 }
 
 /* Settings Panel */
 #settings-panel {
   max-width: 300px;
   width: 100%;
+  margin-top: 1.5rem;
 }
 
+/* Range Slider */
 input[type='range'] {
   appearance: none;
+  width: 100%;
   height: 6px;
   background: #ddd;
   border-radius: 3px;
   outline: none;
   transition: background 0.3s;
+  cursor: pointer;
 }
 
 input[type='range']::-webkit-slider-thumb {
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #7c3aed;
   cursor: pointer;
   transition: background 0.2s;
+  border: none;
+  margin-top: -7px; /* Center thumb vertically */
 }
 
 input[type='range']::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #7c3aed;
   cursor: pointer;
+  border: none;
 }
 
-/* Accessibility / Responsive */
+/* Dark mode slider */
+body.dark input[type='range'] {
+  background: #374151;
+}
+
+body.dark input[type='range']::-webkit-slider-thumb,
+body.dark input[type='range']::-moz-range-thumb {
+  background: #a78bfa;
+}
+
+/* Controls container */
+#controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Accessibility and Responsive */
 @media (max-width: 600px) {
   #timer-display {
     font-size: 3rem;
+    margin-bottom: 1rem;
   }
-
   .btn {
-    padding: 0.4rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    min-width: 80px;
+  }
+  #progress-ring {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 1rem;
+  }
+  #quote {
+    font-size: 0.85rem;
+    max-width: 90vw;
+    margin: 0.75rem auto;
+  }
+  #settings-panel {
+    max-width: 100%;
+    padding: 0 1rem;
   }
 }

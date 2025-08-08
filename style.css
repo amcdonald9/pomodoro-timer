@@ -13,7 +13,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark {
+html.dark body {
   background-color: #111827;
   color: #f9fafb;
 }
@@ -53,12 +53,12 @@ body.dark {
 }
 
 /* Dark Mode Buttons */
-body.dark .btn {
+html.dark body .btn {
   background-color: #a78bfa;
   color: #1f2937;
 }
 
-body.dark .btn:hover:not(:disabled) {
+html.dark body .btn:hover:not(:disabled) {
   background-color: #c4b5fd;
 }
 
@@ -75,7 +75,7 @@ body.dark .btn:hover:not(:disabled) {
   user-select: text;
 }
 
-body.dark .input {
+html.dark body .input {
   background-color: #1f2937;
   border-color: #4b5563;
   color: white;
@@ -102,11 +102,11 @@ body.dark .input {
 }
 
 /* Dark Mode Progress Ring Colors */
-body.dark .progress-bg {
+html.dark body .progress-bg {
   stroke: #374151;
 }
 
-body.dark .progress-indicator {
+html.dark body .progress-indicator {
   stroke: #a78bfa;
 }
 
@@ -122,7 +122,7 @@ body.dark .progress-indicator {
   color: #6b7280; /* Gray-500 */
 }
 
-body.dark #quote {
+html.dark body #quote {
   color: #d1d5db; /* Gray-300 */
 }
 
@@ -167,12 +167,12 @@ input[type='range']::-moz-range-thumb {
 }
 
 /* Dark mode slider */
-body.dark input[type='range'] {
+html.dark body input[type='range'] {
   background: #374151;
 }
 
-body.dark input[type='range']::-webkit-slider-thumb,
-body.dark input[type='range']::-moz-range-thumb {
+html.dark body input[type='range']::-webkit-slider-thumb,
+html.dark body input[type='range']::-moz-range-thumb {
   background: #a78bfa;
 }
 

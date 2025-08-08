@@ -2,7 +2,6 @@
 
 A sleek, modern, and fully responsive Pomodoro Timer built with accessibility and productivity in mind. Designed for students, teachers, professionals — anyone who wants to manage time better using the Pomodoro technique.
 
-![Screenshot of Pomodoro Timer Pro Light & Dark Mode](./preview.png)
 
 ## 🌐 Live Demo
 
